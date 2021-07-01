@@ -9,7 +9,11 @@ const PeopleDetails = () => {
     useEffect(() => {
         fetch(`https://ghibliapi.herokuapp.com/people/${peopleid}`)
           .then((res) => res.json())
-          .then((peeps) => setPeople(peeps));
+          .then((peeps) => setPeople(peeps))
+          .catch((err) => {
+            err = new Error('Failed to Fetch')
+            console.log(err)
+          })
       }, []);
 
 

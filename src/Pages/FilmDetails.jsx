@@ -9,7 +9,11 @@ const FilmDetails = () => {
     useEffect(() => {
         fetch(`https://ghibliapi.herokuapp.com/films/${filmid}`)
           .then((res) => res.json())
-          .then((film) => setFilms(film));
+          .then((film) => setFilms(film))
+          .catch((err) => {
+            err = new Error('Failed to Fetch')
+            console.log(err)
+          })
       }, []);
 
 

@@ -7,7 +7,11 @@ const Locations = () => {
   useEffect(() => {
     fetch("https://ghibliapi.herokuapp.com/locations")
       .then((res) => res.json())
-      .then((locations) => setLocation(locations));
+      .then((locations) => setLocation(locations))
+      .catch((err) => {
+        err = new Error('Failed to Fetch')
+        console.log(err)
+      })
   }, []);
   return (
     <main className="container">

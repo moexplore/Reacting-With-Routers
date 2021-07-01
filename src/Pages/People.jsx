@@ -6,7 +6,11 @@ const People = () => {
   useEffect(() => {
     fetch("https://ghibliapi.herokuapp.com/people")
       .then((res) => res.json())
-      .then((peoples) => setPeople(peoples));
+      .then((peoples) => setPeople(peoples))
+      .catch((err) => {
+        err = new Error('Failed to Fetch')
+        console.log(err)
+      })
   }, []);
   return (
     <main className="container">
